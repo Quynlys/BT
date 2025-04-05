@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kéo thả từ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .drop-container {
+            border: 2px dashed #ccc;
+            min-height: 50px;
+            margin: 20px 0;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .word-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+            padding: 10px;
+            border: 2px dashed #ccc;
+            background-color: #f0f0f0;
+            flex-wrap: wrap;
+        }
+
+        .word {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .question-section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hoàn thành câu:</h1>
+
+        <!-- Câu 1 (ID: 44642) -->
+        <div id="section1" class="question-section">
+            <div id="sentence1" class="drop-container"></div>
+            <div class="word-container" id="word-container1">
+                <div class="word" data-order="1">Peter’s mother</div>
+                <div class="word" data-order="2">was</div>
+                <div class="word" data-order="3">too</div>
+                <div class="word" data-order="4">busy</div>
+                <div class="word" data-order="5">to (1)</div>
+                <div class="word" data-order="6">take</div>
+                <div class="word" data-order="7">him</div>
+                <div class="word" data-order="8">to</div>
+                <div class="word" data-order="9">the cinema.</div>
+            </div>
+            <button id="checkButton1">Kiểm tra câu</button>
+            <div id="result1" class="result"></div>
+        </div>
+
+        <!-- Câu 2 (ID: 44643) -->
+        <div id="section2" class="question-section">
+            <div id="sentence2" class="drop-container"></div>
+            <div class="word-container" id="word-container2">
+                <div class="word" data-order="1">The laptop</div>
+                <div class="word" data-order="2">isn’t</div>
+                <div class="word" data-order="3">fast</div>
+                <div class="word" data-order="4">enough</div>
+                <div class="word" data-order="5">to</div>
+                <div class="word" data-order="6">download</div>
+                <div class="word" data-order="7">the</div>
+                <div class="word" data-order="8">film.</div>
+            </div>
+            <button id="checkButton2">Kiểm tra câu</button>
+            <div id="result2" class="result"></div>
+        </div>
+
+        <!-- Câu 3 (ID: 44644) -->
+        <div id="section3" class="question-section">
+            <div id="sentence3" class="drop-container"></div>
+            <div class="word-container" id="word-container3">
+                <div class="word" data-order="1">What</div>
+                <div class="word" data-order="2">is</div>
+                <div class="word" data-order="3">the</div>
+                <div class="word" data-order="4">most</div>
+                <div class="word" data-order="5">popular</div>
+                <div class="word" data-order="6">mean</div>
+                <div class="word" data-order="7">of</div>
+                <div class="word" data-order="8">transport</div>
+                <div class="word" data-order="9">in</div>
+                <div class="word" data-order="10">your</div>
+                <div class="word" data-order="11">country?</div>
+            </div>
+            <button id="checkButton3">Kiểm tra câu</button>
+            <div id="result3" class="result"></div>
+        </div>
+
+        <!-- Câu 4 (ID: 44645) -->
+        <div id="section4" class="question-section">
+            <div id="sentence4" class="drop-container"></div>
+            <div class="word-container" id="word-container4">
+                <div class="word" data-order="1">Which</div>
+                <div class="word" data-order="2">place</div>
+                <div class="word" data-order="3">do</div>
+                <div class="word" data-order="4">you</div>
+                <div class="word" data-order="5">think</div>
+                <div class="word" data-order="6">is</div>
+                <div class="word" data-order="7">better</div>
+                <div class="word" data-order="8">to</div>
+                <div class="word" data-order="9">live?</div>
+            </div>
+            <button id="checkButton4">Kiểm tra câu</button>
+            <div id="result4" class="result"></div>
+        </div>
+
+        <!-- Câu 5 -->
+        <div id="section5" class="question-section">
+            <div id="sentence5" class="drop-container"></div>
+            <div class="word-container" id="word-container5">
+                <div class="word" data-order="1">Young</div>
+                <div class="word" data-order="2">students</div>
+                <div class="word" data-order="3">often</div>
+                <div class="word" data-order="4">ride</div>
+                <div class="word" data-order="5">bicycles</div>
+                <div class="word" data-order="6">to</div>
+                <div class="word" data
+
+-order="7">school</div>
+                <div class="word" data-order="8">every day.</div>
+            </div>
+            <button id="checkButton5">Kiểm tra câu</button>
+            <div id="result5" class="result"></div>
+        </div>
+
+        <!-- Câu 6 (ID: 44702) -->
+        <div id="section6" class="question-section">
+            <div id="sentence6" class="drop-container"></div>
+            <div class="word-container" id="word-container6">
+                <div class="word" data-order="1">Marre</div>
+                <div class="word" data-order="2">did</div>
+                <div class="word" data-order="3">her</div>
+                <div class="word" data-order="4">homework</div>
+                <div class="word" data-order="5">when</div>
+                <div class="word" data-order="6">she</div>
+                <div class="word" data-order="7">got</div>
+                <div class="word" data-order="8">home</div>
+                <div class="word" data-order="9">from the zoo.</div>
+            </div>
+            <button id="checkButton6">Kiểm tra câu</button>
+            <div id="result6" class="result"></div>
+        </div>
+
+        <!-- Câu 7 (ID: 44703) -->
+        <div id="section7" class="question-section">
+            <div id="sentence7" class="drop-container"></div>
+            <div class="word-container" id="word-container7">
+                <div class="word" data-order="1">It</div>
+                <div class="word" data-order="2">is</div>
+                <div class="word" data-order="3">difficult</div>
+                <div class="word" data-order="4">for</div>
+                <div class="word" data-order="5">buses</div>
+                <div class="word" data-order="6">to</div>
+                <div class="word" data-order="7">move</div>
+                <div class="word" data-order="8">to</div>
+                <div class="word" data-order="9">school</div>
+                <div class="word" data-order="10">London.</div>
+            </div>
+            <button id="checkButton7">Kiểm tra câu</button>
+            <div id="result7" class="result"></div>
+        </div>
+
+        <!-- Câu 8 (ID: 44704) -->
+        <div id="section8" class="question-section">
+            <div id="sentence8" class="drop-container"></div>
+            <div class="word-container" id="word-container8">
+                <div class="word" data-order="1">My</div>
+                <div class="word" data-order="2">sister</div>
+                <div class="word" data-order="3">is</div>
+                <div class="word" data-order="4">really</div>
+                <div class="word" data-order="5">good</div>
+                <div class="word" data-order="6">at</div>
+                <div class="word" data-order="7">playing</div>
+                <div class="word" data-order="8">the</div>
+                <div class="word" data-order="9">guitar.</div>
+            </div>
+            <button id="checkButton8">Kiểm tra câu</button>
+            <div id="result8" class="result"></div>
+        </div>
+
+        <!-- Câu 9 (ID: 44705) -->
+        <div id="section9" class="question-section">
+            <div id="sentence9" class="drop-container"></div>
+            <div class="word-container" id="word-container9">
+                <div class="word" data-order="1">I</div>
+                <div class="word" data-order="2">don’t</div>
+                <div class="word" data-order="3">enjoy</div>
+                <div class="word" data-order="4">going</div>
+                <div class="word" data-order="5">to</div>
+                <div class="word" data-order="6">the</div>
+                <div class="word" data-order="7">cinema</div>
+                <div class="word" data-order="8">on</div>
+                <div class="word" data-order="9">my</div>
+                <div class="word" data-order="10">own.</div>
+            </div>
+            <button id="checkButton9">Kiểm tra câu</button>
+            <div id="result9" class="result"></div>
+        </div>
+
+        <!-- Câu 10 -->
+        <div id="section10" class="question-section">
+            <div id="sentence10" class="drop-container"></div>
+            <div class="word-container" id="word-container10">
+                <div class="word" data-order="1">I</div>
+                <div class="word" data-order="2">like</div>
+                <div class="word" data-order="3">to</div>
+                <div class="word" data-order="4">save</div>
+                <div class="word" data-order="5">photographs</div>
+                <div class="word" data-order="6">of</div>
+                <div class="word" data-order="7">animals</div>
+                <div class="word" data-order="8">in</div>
+                <div class="word" data-order="9">my computer.</div>
+            </div>
+            <button id="checkButton10">Kiểm tra câu</button>
+            <div id="result10" class="result"></div>
+        </div>
+
+        <!-- Câu 11 (ID: 42497) -->
+        <div id="section11" class="question-section">
+            <div id="sentence11" class="drop-container"></div>
+            <div class="word-container" id="word-container11">
+                <div class="word" data-order="1">I</div>
+                <div class="word" data-order="2">need to</div>
+                <div class="word" data-order="3">get</div>
+                <div class="word" data-order="4">a new passport</div>
+                <div class="word" data-order="5">every ten years</div>
+                <div class="word" data-order="6">because</div>
+                <div class="word" data-order="7">my face</div>
+                <div class="word" data-order="8">changes.</div>
+            </div>
+            <button id="checkButton11">Kiểm tra câu</button>
+            <div id="result11" class="result"></div>
+        </div>
+
+        <!-- Câu 12 (ID: 42498) -->
+        <div id="section12" class="question-section">
+            <div id="sentence12" class="drop-container"></div>
+            <div class="word-container" id="word-container12">
+                <div class="word" data-order="1">Linda</div>
+                <div class="word" data-order="2">was reading</div>
+                <div class="word" data-order="3">the guidebook</div>
+                <div class="word" data-order="4">when</div>
+                <div class="word" data-order="5">she</div>
+                <div class="word" data-order="6">saw</div>
+                <div class="word" data-order="7">the accident.</div>
+            </div>
+            <button id="checkButton12">Kiểm tra câu</button>
+            <div id="result12" class="result"></div>
+        </div>
+
+        <!-- Câu 13 (ID: 42499) -->
+        <div id="section13" class="question-section">
+            <div id="sentence13" class="drop-container"></div>
+            <div class="word-container" id="word-container13">
+                <div class="word" data-order="1">They</div>
+                <div class="word" data-order="2">were</div>
+                <div class="word" data-order="3">taking photos</div>
+                <div class="word" data-order="4">when</div>
+                <div class="word" data-order="5">it started</div>
+                <div class="word" data-order="6">to rain.</div>
+            </div>
+            <button id="checkButton13">Kiểm tra câu</button>
+            <div id="result13" class="result"></div>
+        </div>
+
+        <!-- Câu 14 (ID: 42500) -->
+        <div id="section14" class="question-section">
+            <div id="sentence14" class="drop-container"></div>
+            <div class="word-container" id="word-container14">
+                <div class="word" data-order="1">We</div>
+                <div class="word" data-order="2">visited</div>
+                <div class="word" data-order="3">the museum</div>
+                <div class="word" data-order="4">in the town</div>
+                <div class="word" data-order="5">yesterday.</div>
+            </div>
+            <button id="checkButton14">Kiểm tra câu</button>
+            <div id="result14" class="result"></div>
+        </div>
+
+        <!-- Câu 15 -->
+        <div id="section15" class="question-section">
+            <div id="sentence15" class="drop-container"></div>
+            <div class="word-container" id="word-container15">
+                <div class="word" data-order="1">The</div>
+                <div class="word" data-order="2">Korean tourists</div>
+                <div class="word" data-order="3">hired</div>
+                <div class="word" data-order="4">a local guide</div>
+                <div class="word" data-order="5">to take</div>
+                <div class="word" data-order="6">them</div>
+                <div class="word" data-order="7">across the mountains.</div>
+            </div>
+            <button id="checkButton15">Kiểm tra câu</button>
+            <div id="result15" class="result"></div>
+        </div>
+
+        <!-- Câu 16 (ID: 42672) -->
+        <div id="section16" class="question-section">
+            <div id="sentence16" class="drop-container"></div>
+            <div class="word-container" id="word-container16">
+                <div class="word" data-order="1">They</div>
+                <div class="word" data-order="2">went to</div>
+                <div class="word" data-order="3">the theatre,</div>
+                <div class="word" data-order="4">but</div>
+                <div class="word" data-order="5">they couldn’t</div>
+                <div class="word" data-order="6">get tickets.</div>
+            </div>
+            <button id="checkButton16">Kiểm tra câu</button>
+            <div id="result16" class="result"></div>
+        </div>
+
+        <!-- Câu 17 (ID: 42673) -->
+        <div id="section17" class="question-section">
+            <div id="sentence17" class="drop-container"></div>
+            <div class="word-container" id="word-container17">
+                <div class="word" data-order="1">The</div>
+                <div class="word" data-order="2">tourists</div>
+                <div class="word" data-order="3">were really</div>
+                <div class="word" data-order="4">tired</div>
+                <div class="word" data-order="5">when they</div>
+                <div class="word" data-order="6">arrived at</div>
+                <div class="word" data-order="7">the hotel.</div>
+            </div>
+            <button id="checkButton17">Kiểm tra câu</button>
+            <div id="result17" class="result"></div>
+        </div>
+
+        <!-- Câu 18 (ID: 42674) -->
+        <div id="section18" class="question-section">
+            <div id="sentence18" class="drop-container"></div>
+            <div class="word-container" id="word-container18">
+                <div class="word" data-order="1">John</div>
+                <div class="word" data-order="2">and Sarah</div>
+                <div class="word" data-order="3">were exploring</div>
+                <div class="word" data-order="4">the island</div>
+                <div class="word" data-order="5">when</div>
+                <div class="word" data-order="6">they suddenly</div>
+                <div class="word" data-order="7">got lost.</div>
+            </div>
+            <button id="checkButton18">Kiểm tra câu</button>
+            <div id="result18" class="result"></div>
+        </div>
+
+        <!-- Câu 19 -->
+        <div id="section19" class="question-section">
+            <div id="sentence19" class="drop-container"></div>
+            <div class="word-container" id="word-container19">
+                <div class="word" data-order="1">The group</div>
+                <div class="word" data-order="2">was having</div>
+                <div class="word" data-order="3">a great time</div>
+                <div class="word" data-order="4">to visit</div>
+                <div class="word" data-order="5">Paris</div>
+                <div class="word" data-order="6">while they</div>
+                <div class="word" data-order="7">were there.</div>
+            </div>
+            <button id="checkButton19">Kiểm tra câu</button>
+            <div id="result19" class="result"></div>
+        </div>
+
+        <!-- Câu 20 -->
+        <div id="section20" class="question-section">
+            <div id="sentence20" class="drop-container"></div>
+            <div class="word-container" id="word-container20">
+                <div class="word" data-order="1">What sport</div>
+                <div class="word" data-order="2">could</div>
+                <div class="word" data-order="3">you</div>
+                <div class="word" data-order="4">play</div>
+                <div class="word" data-order="5">when</div>
+                <div class="word" data-order="6">you</div>
+                <div class="word" data-order="7">were</div>
+                <div class="word" data-order="8">at</div>
+                <div class="word" data-order="9">high school?</div>
+            </div>
+            <button id="checkButton20">Kiểm tra câu</button>
+            <div id="result20" class="result"></div>
+        </div>
+
+        <!-- Câu 21 -->
+        <div id="section21" class="question-section">
+            <div id="sentence21" class="drop-container"></div>
+            <div class="word-container" id="word-container21">
+                <div class="word" data-order="1">Why</div>
+                <div class="word" data-order="2">do</div>
+                <div class="word" data-order="3">we</div>
+                <div class="word" data-order="4">have to</div>
+                <div class="word" data-order="5">organize</div>
+                <div class="word" data-order="6">the</div>
+                <div class="word" data-order="7">sporting</div>
+                <div class="word" data-order="8">events?</div>
+            </div>
+            <button id="checkButton21">Kiểm tra câu</button>
+            <div id="result21" class="result"></div>
+        </div>
+
+        <!-- Câu 22 -->
+        <div id="section22" class="question-section">
+            <div id="sentence22" class="drop-container"></div>
+            <div class="word-container" id="word-container22">
+                <div class="word" data-order="1">What</div>
+                <div class="word" data-order="2">kind</div>
+                <div class="word" data-order="3">of</div>
+                <div class="word" data-order="4">musical</div>
+                <div class="word" data-order="5">instrument</div>
+                <div class="word" data-order="6">can</div>
+                <div class="word" data-order="7">you</div>
+                <div class="word" data-order="8">play?</div>
+            </div>
+            <button id="checkButton22">Kiểm tra câu</button>
+            <div id="result22" class="result"></div>
+        </div>
+
+        <!-- Câu 23 -->
+        <div id="section23" class="question-section">
+            <div id="sentence23" class="drop-container"></div>
+            <div class="word-container" id="word-container23">
+                <div class="word" data-order="1">They</div>
+                <div class="word" data-order="2">must</div>
+                <div class="word" data-order="3">do</div>
+                <div class="word" data-order="4">judo</div>
+                <div class="word" data-order="5">to</div>
+                <div class="word" data-order="6">keep</div>
+                <div class="word" data-order="7">them</div>
+                <div class="word" data-order="8">fit and</div>
+                <div class="word" data-order="9">stay</div>
+                <div class="word" data-order="10">healthy.</div>
+            </div>
+            <button id="checkButton23">Kiểm tra câu</button>
+            <div id="result23" class="result"></div>
+        </div>
+
+        <!-- Câu 24 -->
+        <div id="section24" class="question-section">
+            <div id="sentence24" class="drop-container"></div>
+            <div class="word-container" id="word-container24">
+                <div class="word" data-order="1">She</div>
+                <div class="word" data-order="2">cannot</div>
+                <div class="word" data-order="3">go</div>
+                <div class="word" data-order="4">horse racing</div>
+                <div class="word" data-order="5">because</div>
+                <div class="word" data-order="6">it’s</div>
+                <div class="word" data-order="7">too</div>
+                <div class="word" data-order="8">expensive</div>
+                <div class="word" data-order="9">for</div>
+                <div class="word" data-order="10">her.</div>
+            </div>
+            <button id="checkButton24">Kiểm tra câu</button>
+            <div id="result24" class="result"></div>
+        </div>
+
+        <!-- Câu 25 (ID: 43804) -->
+        <div id="section25" class="question-section">
+            <div id="sentence25" class="drop-container"></div>
+            <div class="word-container" id="word-container25">
+                <div class="word" data-order="1">We’d</div>
+                <div class="word" data-order="2">play football</div>
+                <div class="word" data-order="3">in</div>
+                <div class="word" data-order="4">football ground</div>
+                <div class="word" data-order="5">when</div>
+                <div class="word" data-order="6">we</div>
+                <div class="word" data-order="7">were</div>
+                <div class="word" data-order="8">students</div>
+                <div class="word" data-order="9">at school.</div>
+            </div>
+            <button id="checkButton25">Kiểm tra câu</button>
+            <div id="result25" class="result"></div>
+        </div>
+
+        <!-- Câu 26 (ID: 43805) -->
+        <div id="section26" class="question-section">
+            <div id="sentence26" class="drop-container"></div>
+            <div class="word-container" id="word-container26">
+                <div class="word" data-order="1">Do you</div>
+                <div class="word" data-order="2">think</div>
+                <div class="word" data-order="3">it would</div>
+                <div class="word" data-order="4">be</div>
+                <div class="word" data-order="5">great</div>
+                <div class="word" data-order="6">to attend</div>
+                <div class="word" data-order="7">a live</div>
+                <div class="word" data-order="8">Korean concert</div>
+                <div class="word" data-order="9">by Black Pink?</div>
+            </div>
+            <button id="checkButton26">Kiểm tra câu</button>
+            <div id="result26" class="result"></div>
+        </div>
+
+        <!-- Câu 27 (ID: 43806) -->
+        <div id="section27" class="question-section">
+            <div id="sentence27" class="drop-container"></div>
+            <div class="word-container" id="word-container27">
+                <div class="word" data-order="1">My father</div>
+                <div class="word" data-order="2">wouldn’t</div>
+                <div class="word" data-order="3">often sleep</div>
+                <div class="word" data-order="4">in</div>
+                <div class="word" data-order="5">the afternoon.</div>
+                <div class="word" data-order="6">at noon,</div>
+                <div class="word" data-order="7">so</div>
+                <div class="word" data-order="8">he felt</div>
+                <div class="word" data-order="9">really tired</div>
+            </div>
+            <button id="checkButton27">Kiểm tra câu</button>
+            <div id="result27" class="result"></div>
+        </div>
+
+        <!-- Câu 28 (ID: 43807) -->
+        <div id="section28" class="question-section">
+            <div id="sentence28" class="drop-container"></div>
+            <div class="word-container" id="word-container28">
+                <div class="word" data-order="1">If we</div>
+                <div class="word" data-order="2">won</div>
+                <div class="word" data-order="3">this sports</div>
+                <div class="word" data-order="4">competition,</div>
+                <div class="word" data-order="5">we would</div>
+                <div class="word" data-order="6">have</div>
+                <div class="word" data-order="7">enough money</div>
+                <div class="word" data-order="8">to travel</div>
+                <div class="word" data-order="9">to Thailand.</div>
+            </div>
+            <button id="checkButton28">Kiểm tra câu</button>
+            <div id="result28" class="result"></div>
+        </div>
+
+        <!-- Câu 29 -->
+        <div id="section29" class="question-section">
+            <div id="sentence29" class="drop-container"></div>
+            <div class="word-container" id="word-container29">
+                <div class="word" data-order="1">It would</div>
+                <div class="word" data-order="2">be</div>
+                <div class="word" data-order="3">a good</div>
+                <div class="word" data-order="4">idea</div>
+                <div class="word" data-order="5">to learn</div>
+                <div class="word" data-order="6">to play</div>
+                <div class="word" data-order="7">a musical</div>
+                <div class="word" data-order="8">instrument</div>
+                <div class="word" data-order="9">like guitar</div>
+                <div class="word" data-order="10">or piano.</div>
+            </div>
+            <button id="checkButton29">Kiểm tra câu</button>
+            <div id="result29" class="result"></div>
+        </div>
+
+        <!-- Câu 30 -->
+        <div id="section30" class="question-section">
+            <div id="sentence30" class="drop-container"></div>
+            <div class="word-container" id="word-container30">
+                <div class="word" data-order="1">Photos of</div>
+                <div class="word" data-order="2">free-time activities</div>
+                <div class="word" data-order="3">are</div>
+                <div class="word" data-order="4">shared</div>
+                <div class="word" data-order="5">on social media</div>
+                <div class="word" data-order="6">every day</div>
+                <div class="word" data-order="7">by</div>
+                <div class="word" data-order="8">Tom.</div>
+            </div>
+            <button id="checkButton30">Kiểm tra câu</button>
+            <div id="result30" class="result"></div>
+        </div>
+
+        <!-- Câu 31 -->
+        <div id="section31" class="question-section">
+            <div id="sentence31" class="drop-container"></div>
+            <div class="word-container" id="word-container31">
+                <div class="word" data-order="1">The screen</div>
+                <div class="word" data-order="2">is</div>
+                <div class="word" data-order="3">usually</div>
+                <div class="word" data-order="4">turned off</div>
+                <div class="word" data-order="5">after ten minutes</div>
+                <div class="word" data-order="6">to</div>
+                <div class="word" data-order="7">save</div>
+                <div class="word" data-order="8">battery power.</div>
+            </div>
+            <button id="checkButton31">Kiểm tra câu</button>
+            <div id="result31" class="result"></div>
+        </div>
+
+        <!-- Câu 32 -->
+        <div id="section32" class="question-section">
+            <div id="sentence32" class="drop-container"></div>
+            <div class="word-container" id="word-container32">
+                <div class="word" data-order="1">Do</div>
+                <div class="word" data-order="2">you</div>
+                <div class="word" data-order="3">follow</div>
+                <div class="word" data-order="4">any</div>
+                <div class="word" data-order="5">famous</div>
+                <div class="word" data-order="6">singers</div>
+                <div class="word" data-order="7">or actors</div>
+                <div class="word" data-order="8">on</div>
+                <div class="word" data-order="9">Instagram?</div>
+            </div>
+            <button id="checkButton32">Kiểm tra câu</button>
+            <div id="result32" class="result"></div>
+        </div>
+
+        <!-- Câu 33 -->
+        <div id="section33" class="question-section">
+            <div id="sentence33" class="drop-container"></div>
+            <div class="word-container" id="word-container33">
+                <div class="word" data-order="1">What</div>
+                <div class="word" data-order="2">tools</div>
+                <div class="word" data-order="3">do</div>
+                <div class="word" data-order="4">you</div>
+                <div class="word" data-order="5">use</div>
+                <div class="word" data-order="6">to</div>
+                <div class="word" data-order="7">search</div>
+                <div class="word" data-order="8">for</div>
+                <div class="word" data-order="9">information?</div>
+            </div>
+            <button id="checkButton33">Kiểm tra câu</button>
+            <div id="result33" class="result"></div>
+        </div>
+
+        <!-- Câu 34 -->
+        <div id="section34" class="question-section">
+            <div id="sentence34" class="drop-container"></div>
+            <div class="word-container" id="word-container34">
+                <div class="word" data-order="1">How</div>
+                <div class="word" data-order="2">is</div>
+                <div class="word" data-order="3">important information</div>
+                <div class="word" data-order="4">saved</div>
+                <div class="word" data-order="5">on</div>
+                <div class="word" data-order="6">your computer?</div>
+            </div>
+            <button id="checkButton34">Kiểm tra câu</button>
+            <div id="result34" class="result"></div>
+        </div>
+
+        <!-- Câu 35 (ID: 44343) -->
+        <div id="section35" class="question-section">
+            <div id="sentence35" class="drop-container"></div>
+            <div class="word-container" id="word-container35">
+                <div class="word" data-order="1">The 2010 Texting World Cup</div>
+                <div class="word" data-order="2">was won</div>
+                <div class="word" data-order="3">by Korea.</div>
+            </div>
+            <button id="checkButton35">Kiểm tra câu</button>
+            <div id="result35" class="result"></div>
+        </div>
+
+        <!-- Câu 36 (ID: 44344) -->
+        <div id="section36" class="question-section">
+            <div id="sentence36" class="drop-container"></div>
+            <div class="word-container" id="word-container36">
+                <div class="word" data-order="1">The software for this game</div>
+                <div class="word" data-order="2">was made</div>
+                <div class="word" data-order="3">by a team of developers in Japan</div>
+                <div class="word" data-order="4">last month.</div>
+            </div>
+            <button id="checkButton36">Kiểm tra câu</button>
+            <div id="result36" class="result"></div>
+        </div>
+
+        <!-- Câu 37 (ID: 44346) -->
+        <div id="section37" class="question-section">
+            <div id="sentence37" class="drop-container"></div>
+            <div class="word-container" id="word-container37">
+                <div class="word" data-order="1">The first computer game</div>
+                <div class="word" data-order="2">was invented</div>
+                <div class="word" data-order="3">by Steve Russell.</div>
+            </div>
+            <button id="checkButton37">Kiểm tra câu</button>
+            <div id="result37" class="result"></div>
+        </div>
+
+        <!-- Câu 38 -->
+        <div id="section38" class="question-section">
+            <div id="sentence38" class="drop-container"></div>
+            <div class="word-container" id="word-container38">
+                <div class="word" data-order="1">These old cars</div>
+                <div class="word" data-order="2">were produced</div>
+                <div class="word" data-order="3">by a German company</div>
+                <div class="word" data-order="4">in the 1970s.</div>
+            </div>
+            <button id="checkButton38">Kiểm tra câu</button>
+            <div id="result38" class="result"></div>
+        </div>
+
+        <!-- Câu 39 (ID: 41988) -->
+        <div id="section39" class="question-section">
+            <div id="sentence39" class="drop-container"></div>
+            <div class="word-container" id="word-container39">
+                <div class="word" data-order="1">Children</div>
+                <div class="word" data-order="2">shouldn’t</div>
+                <div class="word" data-order="3">see</div>
+                <div class="word" data-order="4">that film</div>
+                <div class="word" data-order="5">because</div>
+                <div class="word" data-order="6">its content</div>
+                <div class="word" data-order="7">is</div>
+                <div class="word" data-order="8">too violent.</div>
+            </div>
+            <button id="checkButton39">Kiểm tra câu</button>
+            <div id="result39" class="result"></div>
+        </div>
+
+        <!-- Câu 40 (ID: 41989) -->
+        <div id="section40" class="question-section">
+            <div id="sentence40" class="drop-container"></div>
+            <div class="word-container" id="word-container40">
+                <div class="word" data-order="1">Serena</div>
+                <div class="word" data-order="2">was</div>
+                <div class="word" data-order="3">watching</div>
+                <div class="word" data-order="4">a</div>
+                <div class="word" data-order="5">romantic film</div>
+                <div class="word" data-order="6">when</div>
+                <div class="word" data-order="7">the power</div>
+                <div class="word" data-order="8">went</div>
+                <div class="word" data-order="9">out.</div>
+            </div>
+            <button id="checkButton40">Kiểm tra câu</button>
+            <div id="result40" class="result"></div>
+        </div>
+
+        <!-- Câu 41 (ID: 41990) -->
+        <div id="section41" class="question-section">
+            <div id="sentence41" class="drop-container"></div>
+            <div class="word-container" id="word-container41">
+                <div class="word" data-order="1">Spider-Man films</div>
+                <div class="word" data-order="2">were</div>
+                <div class="word" data-order="3">produced</div>
+                <div class="word" data-order="4">by</div>
+                <div class="word" data-order="5">Columbia Pictures</div>
+                <div class="word" data-order="6">in</div>
+                <div class="word" data-order="7">the</div>
+                <div class="word" data-order="8">USA.</div>
+            </div>
+            <button id="checkButton41">Kiểm tra câu</button>
+            <div id="result41" class="result"></div>
+        </div>
+
+        <!-- Câu 42 (ID: 41991) -->
+        <div id="section42" class="question-section">
+            <div id="sentence42" class="drop-container"></div>
+            <div class="word-container" id="word-container42">
+                <div class="word" data-order="1">I</div>
+                <div class="word" data-order="2">don’t</div>
+                <div class="word" data-order="3">have</div>
+                <div class="word" data-order="4">enough</div>
+                <div class="word" data-order="5">information</div>
+                <div class="word" data-order="6">to</div>
+                <div class="word" data-order="7">finish</div>
+                <div class="word" data-order="8">my report</div>
+                <div class="word" data-order="9">before</div>
+                <div class="word" data-order="10">Friday.</div>
+            </div>
+            <button id="checkButton42">Kiểm tra câu</button>
+            <div id="result42" class="result"></div>
+        </div>
+
+        <!-- Câu 43 -->
+        <div id="section43" class="question-section">
+            <div id="sentence43" class="drop-container"></div>
+            <div class="word-container" id="word-container43">
+                <div class="word" data-order="1">What movie</div>
+                <div class="word" data-order="2">did</div>
+                <div class="word" data-order="3">you</div>
+                <div class="word" data-order="4">want</div>
+                <div class="word" data-order="5">to</div>
+                <div class="word" data-order="6">watch again</div>
+                <div class="word" data-order="7">as soon as</div>
+                <div class="word" data-order="8">it</div>
+                <div class="word" data-order="9">finished?</div>
+            </div>
+            <button id="checkButton43">Kiểm tra câu</button>
+            <div id="result43" class="result"></div>
+        </div>
+
+    </div>
+
+    <script>
+        const checkButtons = document.querySelectorAll('button[id^="checkButton"]');
+        const resultDivs = document.querySelectorAll('.result');
+        const questionSections = document.querySelectorAll('.question-section');
+        const wordContainers = document.querySelectorAll('.word-container');
+
+        function shuffleWords(wordContainer) {
+            const wordArray = Array.from(wordContainer.children);
+            wordArray.sort(() => Math.random() - 0.5);
+            wordArray.forEach(word => wordContainer.appendChild(word));
+        }
+
+        document.querySelectorAll('.word').forEach(word => {
+            word.addEventListener('click', () => {
+                const dropContainer = word.closest('.question-section').querySelector('.drop-container');
+                if (!dropContainer.contains(word)) {
+                    dropContainer.appendChild(word);
+                }
+            });
+        });
+
+        questionSections.forEach(section => {
+            section.querySelector('.drop-container').addEventListener('click', (e) => {
+                if (e.target.classList.contains('word')) {
+                    const word = e.target;
+                    const wordContainer = section.querySelector('.word-container');
+                    wordContainer.appendChild(word);
+                }
+            });
+        });
+
+        checkButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                const dropContainer = questionSections[index].querySelector('.drop-container');
+                const droppedWords = Array.from(dropContainer.children);
+                const droppedOrder = droppedWords.map(word => parseInt(word.dataset.order));
+                const correctOrder = getCorrectOrderForSentence(index);
+
+                if (JSON.stringify(droppedOrder) === JSON.stringify(correctOrder)) {
+                    resultDivs[index].textContent = "Câu đúng!";
+                    resultDivs[index].style.color = 'green';
+                } else {
+                    resultDivs[index].textContent = "Câu sai, vui lòng thử lại!";
+                    resultDivs[index].style.color = 'red';
+                }
+            });
+        });
+
+        function getCorrectOrderForSentence(index) {
+            switch (index) {
+                case 0: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // Peter’s mother was too busy to take him to the cinema.
+                case 1: return [1, 2, 3, 4, 5, 6, 7, 8]; // The laptop isn’t fast enough to download the film.
+                case 2: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]; // What mean of transport is the most popular in your country?
+                case 3: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // Which place do you think is better to live?
+                case 4: return [1, 2, 3, 4, 5, 6, 7, 8]; // Young students often ride bicycles to school every day.
+                case 5: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // Marre did her homework when she got home from the zoo.
+                case 6: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // It is difficult for buses to move to school London.
+                case 7: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // My sister is really good at playing the guitar.
+                case 8: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // I don’t enjoy going to the cinema on my own.
+                case 9: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // I like to save photographs of animals in my computer.
+                case 10: return [1, 2, 3, 4, 5, 6, 7, 8]; // I need to get a new passport every ten years because my face changes.
+                case 11: return [1, 2, 3, 4, 5, 6, 7]; // Linda was reading the guidebook when she saw the accident.
+                case 12: return [1, 2, 3, 4, 5, 6]; // They were taking photos when it started to rain.
+                case 13: return [1, 2, 3, 4, 5]; // We visited the museum in the town yesterday.
+                case 14: return [1, 2, 3, 4, 5, 6, 7]; // The Korean tourists hired a local guide to take them across the mountains.
+                case 15: return [1, 2, 3, 4, 5, 6]; // They went to the theatre, but they couldn’t get tickets.
+                case 16: return [1, 2, 3, 4, 5, 6, 7]; // The tourists were really tired when they arrived at the hotel.
+                case 17: return [1, 2, 3, 4, 5, 6, 7]; // John and Sarah were exploring the island when they suddenly got lost.
+                case 18: return [1, 2, 3, 4, 5, 6, 7]; // The group was having a great time to visit Paris while they were there.
+                case 19: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // What sport could you play when you were at high school?
+                case 20: return [1, 2, 3, 4, 5, 6, 7, 8]; // Why do we have to organize the sporting events?
+                case 21: return [1, 2, 3, 4, 5, 6, 7, 8]; // What kind of musical instrument can you play?
+                case 22: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // They must do judo to keep them fit and stay healthy.
+                case 23: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // She cannot go horse racing because it’s too expensive for her.
+                case 24: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // We’d play football in football ground when we were students at school.
+                case 25: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // Do you think it would be great to attend a live Korean concert by Black Pink?
+                case 26: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // My father wouldn’t often sleep in the afternoon at noon, so he felt really tired.
+                case 27: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // If we won this sports competition, we would have enough money W to travel to Thailand.
+                case 28: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // It would be a good idea to learn to play a musical instrument like guitar or piano.
+                case 29: return [1, 2, 3, 4, 5, 6, 7, 8]; // Photos of free-time activities are shared on social media every day by Tom.
+                case 30: return [1, 2, 3, 4, 5, 6, 7, 8]; // The screen is usually turned off after ten minutes to save battery power.
+                case 31: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // Do you follow any famous singers or actors on Instagram?
+                case 32: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // What tools do you use to search for information?
+                case 33: return [1, 2, 3, 4, 5, 6]; // How is important information saved on your computer?
+                case 34: return [1, 2, 3]; // The 2010 Texting World Cup was won by Korea.
+                case 35: return [1, 2, 3, 4]; // The software for this game was made by a team of developers in Japan last month.
+                case 36: return [1, 2, 3]; // The first computer game was invented by Steve Russell.
+                case 37: return [1, 2, 3, 4]; // These old cars were produced by a German company in the 1970s.
+                case 38: return [1, 2, 3, 4, 5, 6, 7, 8]; // Children shouldn’t see that film because its content is too violent.
+                case 39: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // Serena was watching a romantic film when the power went out.
+                case 40: return [1, 2, 3, 4, 5, 6, 7, 8]; // Spider-Man films were produced by Columbia Pictures in the USA.
+                case 41: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // I don’t have enough information to finish my report before Friday.
+                case 42: return [1, 2, 3, 4, 5, 6, 7, 8, 9]; // What movie did you want to watch again as soon as it finished?
+                default: return [];
+            }
+        }
+
+        window.onload = () => {
+            for (let i = 0; i < wordContainers.length; i++) {
+                shuffleWords(wordContainers[i]);
+            }
+        }
+    </script>
+</body>
+</html>
